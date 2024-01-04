@@ -13,6 +13,7 @@ It's just a dummy tag to denote "other"
 ![image](https://github.com/DecafSunrise/Country-HMM/assets/36832027/1b7e9a19-c430-47a0-92aa-f556ca6aec67)  
 Accuracy is a fine metric, but it doesn't tell the whole story. 
 - For starters, it's only a reflection of the training data. If we have flawed training data (which we do, 'cuz we're programmaticly tagging training data without human intervention), it'll make mistakes.
+- There's a class imbalance problem here: Most words are not country references. In fact, many news articles don't reference a country at all - Meaning if the model throws "Other" tags on every word, it'll have a very high accuracy.
 - To help provide a better understanding of where the model differs from the heuristic-based annotation, I'm checking a random sample of 500 article titles from my news articles corpora to see if they're a match.
   - On average, somewhere between **110-150** annotations and HMM tags differ out of the 500 **(~22-30%)** across training runs. Sometimes this is good (the model generalizes), sometimes this is bad (the model stubbornly throws errant tags).
 
