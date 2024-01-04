@@ -19,8 +19,9 @@ Accuracy is a fine metric, but it doesn't tell the whole story.
 ## Where does it break?
 ![image](https://github.com/DecafSunrise/Country-HMM/assets/36832027/2da9d0b2-60fc-4b27-9a97-5e597aa0353f)
 - Dual-meaning (polysemy) is a problem. This is clear in the example above: `Jordan` is a country, but `Jim Jordan` shouldn't be. This is somewhat to be expected from a 20+ year old model architecture, but I could probably clean it up a little with smarter annotation rules.  
-![image](https://github.com/DecafSunrise/Country-HMM/assets/36832027/05e89c35-18bd-46f3-9117-57a75449ceed)  
-- The model gets a little tag-happy with the beginnings of sentences. Many article titles begin with "Country: Words words words", so it's possible it's over-fitting on that pattern. I've baked in a validation step for the country ISO names so that the initial training corpus doesn't include it, but I augment (read: Dwarf) this corpus with 50k randomly selected articles right after, without that validation step. 
+![image](https://github.com/DecafSunrise/Country-HMM/assets/36832027/f4fb0a82-afbe-45e6-90bf-e3c1e9f6191e)
+- The model gets a little tag-happy with the beginnings of sentences. I originally thought the model was overfitting on article titles begin with "Country: Words words words", but after adding validation and cleaning steps this errant pattern remains (albiet in a muted form). 
+-  As the snip above shows, this accounts for the perpoderance of Annotation/HMM mismatches (~109 out of 115 mismatches)
 
 ## What's next?
 - Consider adding additional classes, as it may provide additional context to the model
